@@ -32,7 +32,7 @@ export default function Footer() {
 
       <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl"></div>
 
-      <div className="relative z-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+      <div className="relative z-10 flex flex-col gap-5 flex-row items-center justify-between">
         {/* Left */}
         <div className="flex flex-col gap-2">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-yellow-400/20 bg-yellow-400/10 px-4 py-1">
@@ -43,7 +43,7 @@ export default function Footer() {
             </span>
           </div>
 
-          <p className="text-sm leading-relaxed text-gray-300">
+          <p className="text-sm leading-relaxed text-gray-300 max-sm:text-xs">
             © 2026 <span className="font-bold text-white">Haikaruuu</span>. All
             rights reserved.
           </p>
@@ -57,7 +57,7 @@ export default function Footer() {
               href={fl.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${fl.color} p-4 text-xl text-gray-300 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/10`}
+              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${fl.color} p-3 text-xl max-md:text-lg   text-gray-300 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/10`}
             >
               {/* Blur */}
               <div className="absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>

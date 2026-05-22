@@ -19,16 +19,16 @@ export default function PlayPage() {
         <div className="inline-flex items-center gap-3 rounded-full border border-green-400/20 bg-green-400/10 px-5 py-2 backdrop-blur-md">
           <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse"></div>
 
-          <span className="text-sm font-bold tracking-[0.2em] text-green-300">
+          <span className="text-sm font-bold tracking-[0.2em] text-green-300 max-sm:text-xs">
             GAME LOBBY
           </span>
         </div>
 
-        <h1 className="font-jaro text-6xl uppercase tracking-[0.2em] text-green-400 drop-shadow-[0_0_25px_rgba(74,222,128,0.35)]">
+        <h1 className="font-jaro text-6xl uppercase tracking-[0.2em] text-green-400 drop-shadow-[0_0_25px_rgba(74,222,128,0.35)] max-md:text-5xl">
           Shiritori
         </h1>
 
-        <p className="max-w-2xl text-gray-300 leading-relaxed">
+        <p className="max-w-2xl text-gray-300 leading-relaxed max-sm:text-sm">
           Atur mode permainan dan mulai bermain Shiritori bahasa Jepang.
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function PlayPage() {
       <div className="mt-8">
         <button
           onClick={() => navigate(-1)}
-          className="group flex w-fit items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:-translate-x-1 hover:border-yellow-400/30 hover:bg-white/10 cursor-pointer"
+          className="group flex w-fit items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:-translate-x-1 hover:border-yellow-400/30 hover:bg-white/10 cursor-pointer max-sm:text-sm"
         >
           <FaArrowLeftLong className="text-green-300 transition-transform duration-300 group-hover:-translate-x-1" />
 
@@ -61,9 +61,11 @@ export default function PlayPage() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-bold text-white">Game Mode</h2>
+                  <h2 className="text-3xl font-bold text-white max-md:text-2xl max-sm:text-xl">
+                    Game Mode
+                  </h2>
 
-                  <p className="text-gray-400">
+                  <p className="text-gray-400 max-sm:text-sm">
                     Pilih mode permainan Shiritori
                   </p>
                 </div>
@@ -73,23 +75,23 @@ export default function PlayPage() {
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 <button className="group rounded-3xl border border-green-400/30 bg-green-400/10 p-5 text-left transition-all duration-300 hover:scale-[1.02]">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-green-300">
+                    <h3 className="text-xl font-bold text-green-300 max-md:text-lg">
                       Classic
                     </h3>
 
-                    <div className="rounded-full bg-green-400 px-3 py-1 text-xs font-bold text-black">
+                    <div className="rounded-full bg-green-400 px-3 py-1 text-xs font-bold text-black ">
                       ACTIVE
                     </div>
                   </div>
 
-                  <p className="mt-3 text-sm leading-relaxed text-gray-300">
+                  <p className="mt-3 text-sm leading-relaxed text-gray-300 ">
                     Main tanpa batas waktu dan santai untuk belajar kosakata.
                   </p>
                 </button>
 
                 <button className="group rounded-3xl border border-white/10 bg-black/20 p-5 text-left transition-all duration-300 hover:border-yellow-400/30 hover:bg-white/10">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-white">
+                    <h3 className="text-xl font-bold text-white max-md:text-lg">
                       Time Attack
                     </h3>
 
@@ -109,18 +111,20 @@ export default function PlayPage() {
             <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl"></div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-white">Pengaturan</h2>
+              <h2 className="text-3xl font-bold text-white max-md:text-2xl max-sm:text-xl">
+                Pengaturan
+              </h2>
 
-              <p className="mt-2 text-gray-400">
+              <p className="mt-2 text-gray-400 max-sm:text-sm">
                 Atur permainan sebelum mulai bermain
               </p>
 
               <div className="mt-7 space-y-5">
                 {/* Timer */}
-                <div className="rounded-3xl border border-white/10 bg-black/20 p-5">
+                {/* <div className="rounded-3xl border border-white/10 bg-black/20 p-5">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-bold text-white">Timer</h3>
+                      <h3 className="text-lg font-bold text-white ">Timer</h3>
 
                       <p className="text-sm text-gray-400">
                         Aktifkan batas waktu permainan
@@ -133,7 +137,7 @@ export default function PlayPage() {
                       <div className="peer h-7 w-14 rounded-full bg-gray-700 transition-all after:absolute after:left-[4px] after:top-[4px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-green-400 peer-checked:after:translate-x-7"></div>
                     </label>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Sound */}
                 <div className="rounded-3xl border border-white/10 bg-black/20 p-5">
@@ -144,7 +148,7 @@ export default function PlayPage() {
                       </div>
 
                       <div>
-                        <h3 className="text-lg font-bold text-white">
+                        <h3 className="text-lg max-sm:text-base font-bold text-white ">
                           Sound Effect
                         </h3>
 
@@ -206,9 +210,11 @@ export default function PlayPage() {
 
           {/* Info */}
           <div className="rounded-4xl border border-yellow-400/20 bg-yellow-400/10 p-6 backdrop-blur-xl">
-            <h3 className="text-xl font-bold text-yellow-300">Tips</h3>
+            <h3 className="text-xl font-bold text-yellow-300 max-md:text-lg">
+              Tips
+            </h3>
 
-            <p className="mt-3 leading-relaxed text-gray-200">
+            <p className="mt-3 leading-relaxed text-gray-200 max-md:text-sm">
               Gunakan kata panjang agar permainan lebih menantang dan hindari
               kata yang berakhir dengan 「ん」.
             </p>

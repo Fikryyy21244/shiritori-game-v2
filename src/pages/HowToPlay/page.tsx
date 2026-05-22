@@ -42,16 +42,16 @@ export default function HowToPlayPage() {
         <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/20 bg-yellow-400/10 px-5 py-2 backdrop-blur-md">
           <div className="h-2 w-2 rounded-full bg-yellow-400 animate-pulse"></div>
 
-          <span className="text-sm font-bold tracking-[0.2em] text-yellow-300">
+          <span className="text-sm font-bold tracking-[0.2em] text-yellow-300 max-sm:text-xs">
             HOW TO PLAY
           </span>
         </div>
 
-        <h1 className="font-jaro text-6xl uppercase tracking-[0.2em] text-yellow-400 drop-shadow-[0_0_25px_rgba(250,204,21,0.35)]">
+        <h1 className="font-jaro text-6xl uppercase tracking-[0.2em] text-yellow-400 drop-shadow-[0_0_25px_rgba(250,204,21,0.35)] max-md:text-5xl ">
           Cara Bermain
         </h1>
 
-        <p className="max-w-2xl text-gray-300 leading-relaxed">
+        <p className="max-w-2xl text-gray-300 leading-relaxed max-sm:text-sm">
           Pelajari aturan dasar Shiritori dan coba bertahan selama mungkin
           dengan menyambung kata bahasa Jepang.
         </p>
@@ -61,11 +61,11 @@ export default function HowToPlayPage() {
       <div className=" mt-8">
         <button
           onClick={() => navigate(-1)}
-          className="group flex w-fit items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:-translate-x-1 hover:border-yellow-400/30 hover:bg-white/10 cursor-pointer"
+          className="group flex w-fit items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:-translate-x-1 hover:border-yellow-400/30 hover:bg-white/10 cursor-pointer "
         >
-          <FaArrowLeftLong className="text-yellow-300 transition-transform duration-300 group-hover:-translate-x-1" />
+          <FaArrowLeftLong className="max-sm:text-sm text-yellow-300 transition-transform duration-300 group-hover:-translate-x-1" />
 
-          <span className="font-semibold text-white group-hover:text-yellow-300 ">
+          <span className="font-semibold text-white group-hover:text-yellow-300  max-sm:text-sm">
             Kembali
           </span>
         </button>
@@ -90,11 +90,11 @@ export default function HowToPlayPage() {
 
           {/* Title */}
           <div>
-            <h2 className="text-4xl font-black leading-tight text-white">
+            <h2 className="text-4xl font-black leading-tight text-white max-sm:text-3xl">
               Sambung Kata Jepang
             </h2>
 
-            <p className="mt-3 max-w-3xl leading-relaxed text-gray-300">
+            <p className="mt-3 max-w-3xl leading-relaxed text-gray-300 max-sm:text-sm">
               Shiritori adalah permainan tradisional Jepang dimana kamu harus
               menyambung kata dari huruf terakhir kata sebelumnya.
             </p>
@@ -132,7 +132,7 @@ export default function HowToPlayPage() {
 
             <div className="relative z-10 flex h-full flex-col justify-between gap-5">
               <div className="flex items-center justify-between">
-                <span className="text-6xl font-black text-yellow-400/40">
+                <span className="text-6xl max-sm:text-5xl font-black text-yellow-400/40">
                   {step.number}
                 </span>
 
@@ -144,12 +144,14 @@ export default function HowToPlayPage() {
               <div>
                 <p className="font-rampart text-lg text-white/60">{step.jp}</p>
 
-                <h3 className="mt-1 text-3xl font-bold text-white">
+                <h3 className="mt-1 text-3xl max-sm:text-2xl font-bold text-white">
                   {step.title}
                 </h3>
               </div>
 
-              <p className="leading-relaxed text-gray-300">{step.desc}</p>
+              <p className="leading-relaxed text-gray-300 max-sm:text-sm">
+                {step.desc}
+              </p>
 
               <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
                 <p className="mb-2 text-sm text-gray-500">Contoh</p>
@@ -169,15 +171,17 @@ export default function HowToPlayPage() {
 
         <div className="relative z-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <h3 className="text-3xl font-bold text-yellow-300">Tips Bermain</h3>
+            <h3 className="text-3xl max-sm:text-2xl font-bold text-yellow-300">
+              Tips Bermain
+            </h3>
 
-            <p className="mt-2 max-w-2xl leading-relaxed text-gray-200">
+            <p className="mt-2 max-w-2xl leading-relaxed text-gray-200 max-sm:text-sm">
               Gunakan kosakata yang panjang dan unik agar permainan bisa
               bertahan lebih lama tanpa terkena huruf 「ん」.
             </p>
           </div>
 
-          <button className="rounded-2xl bg-yellow-400 px-7 py-3 font-bold text-black transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:shadow-lg hover:shadow-yellow-400/30">
+          <button className="rounded-2xl bg-yellow-400 px-7 py-3 font-bold text-black transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:shadow-lg hover:shadow-yellow-400/30 max-sm:text-sm">
             Start Game
           </button>
         </div>

@@ -1,24 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-    --color-dark-red: #6c2c42;
-    --font-inter: "Inter", sans-serif;
-    --font-jaro: "Jaro", sans-serif;
-    --font-mochiy: "Mochiy Pop One", sans-serif;
-    --font-rampart: "Rampart One", sans-serif;
+  --color-dark-red: #6c2c42;
+  --font-inter: "Inter", sans-serif;
+  --font-jaro: "Jaro", sans-serif;
+  --font-mochiy: "Mochiy Pop One", sans-serif;
+  --font-rampart: "Rampart One", sans-serif;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 body {
-    min-height: 100vh;
-    font-family: var(--font-inter);
+  min-height: 100vh;
+  font-family: var(--font-inter);
 
-    background-color: var(--color-dark-red);
-    background-image: url("assets//pattern.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
+  background-color: var(--color-dark-red);
+  background-image: url("assets//pattern.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* HIDE SCROLLBAR */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
