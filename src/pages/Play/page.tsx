@@ -12,6 +12,10 @@ import { useNavigate } from "react-router-dom";
 export default function PlayPage() {
   const navigate = useNavigate();
 
+  const startGame = () => {
+    navigate("/main/playing");
+  };
+
   return (
     <div className="w-full my-10">
       {/* Header */}
@@ -121,7 +125,7 @@ export default function PlayPage() {
 
               <div className="mt-7 space-y-5">
                 {/* Timer */}
-                {/* <div className="rounded-3xl border border-white/10 bg-black/20 p-5">
+                <div className="rounded-3xl border border-white/10 bg-black/20 p-5">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-lg font-bold text-white ">Timer</h3>
@@ -137,7 +141,7 @@ export default function PlayPage() {
                       <div className="peer h-7 w-14 rounded-full bg-gray-700 transition-all after:absolute after:left-[4px] after:top-[4px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-green-400 peer-checked:after:translate-x-7"></div>
                     </label>
                   </div>
-                </div> */}
+                </div>
 
                 {/* Sound */}
                 <div className="rounded-3xl border border-white/10 bg-black/20 p-5">
@@ -201,7 +205,10 @@ export default function PlayPage() {
               </div>
 
               {/* Start */}
-              <button className="group mt-10 flex w-full items-center justify-center gap-4 rounded-3xl bg-green-400 px-7 py-5 text-sm font-black text-black transition-all duration-300 hover:scale-[1.02] hover:bg-green-300 hover:shadow-2xl hover:shadow-green-400/30 cursor-pointer">
+              <button
+                className="group mt-10 flex w-full items-center justify-center gap-4 rounded-3xl bg-green-400 px-7 py-5 text-sm font-black text-black transition-all duration-300 hover:scale-[1.02] hover:bg-green-300 hover:shadow-2xl hover:shadow-green-400/30 cursor-pointer"
+                onClick={startGame}
+              >
                 <FaPlay className="transition-transform duration-300 group-hover:translate-x-1" />
                 START GAME
               </button>

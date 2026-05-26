@@ -239,6 +239,43 @@ export default function KotobaListPage() {
         totalPages={totalPages}
         onChange={setCurrentPage}
       />
+
+      {/* SOURCE DATA */}
+      <div className="mt-6 flex justify-center">
+        <div className="max-w-2xl rounded-3xl border border-cyan-400/20 bg-cyan-400/5 px-6 py-4 text-center backdrop-blur-xl">
+          <p className="text-xs font-bold tracking-[0.2em] text-cyan-300">
+            SUMBER DATA
+          </p>
+
+          <p className="mt-2 text-sm leading-relaxed text-gray-300 max-sm:text-xs">
+            Sebagian besar data kosakata pada halaman ini berasal dari
+            kontribusi teman seperjuangan belajar bahasa Jepang saya,{" "}
+            <span className="font-semibold text-cyan-300"> Abang Friendly</span>
+            , yang kemudian disusun kembali agar lebih nyaman digunakan untuk
+            bermain Shiritori.
+          </p>
+
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm max-sm:text-xs">
+            <a
+              href="https://instagram.com/username"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-pink-400/20 bg-pink-400/10 px-4 py-2 text-pink-300 transition-all duration-300 hover:bg-pink-400/20"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="https://github.com/username"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-gray-200 transition-all duration-300 hover:bg-white/10"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
