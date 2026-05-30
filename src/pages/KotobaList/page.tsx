@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FaArrowLeftLong, FaFilter } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
@@ -84,8 +84,8 @@ export default function KotobaListPage() {
   // SEARCH FILTER
   const filteredWords = words.filter(
     (item) =>
-      item.word.includes(search) ||
-      item.meaning.toLowerCase().includes(search.toLowerCase()),
+      item.word?.toLowerCase().includes(search.toLowerCase()) ||
+      item.meaning?.toLowerCase().includes(search.toLowerCase()),
   );
 
   // PAGINATION
@@ -98,93 +98,149 @@ export default function KotobaListPage() {
     startIndex + ITEMS_PER_PAGE,
   );
 
-  // RESET PAGE
-  useEffect(() => {
+  const handleSelectFilter = (category: string) => {
     setCurrentPage(1);
-  }, [selectedFilter, selectedCategory, search]);
+    setSelectedFilter(category);
 
-  // AUTO SELECT SUB CATEGORY
-  useEffect(() => {
-    if (selectedFilter === "JFT A1") {
-      const firstA1 = Object.keys(vocabulary).find((category) =>
-        category.includes("A1"),
+    if (category === "JFT A1") {
+      const firstA1 = Object.keys(vocabulary).find((item) =>
+        item.includes("A1"),
       );
 
       if (firstA1) {
         setSelectedCategory(firstA1);
       }
-    }
-
-    if (selectedFilter === "JFT A2") {
-      const firstA2 = Object.keys(vocabulary).find((category) =>
-        category.includes("A2"),
+    } else if (category === "JFT A2") {
+      const firstA2 = Object.keys(vocabulary).find((item) =>
+        item.includes("A2"),
       );
 
       if (firstA2) {
         setSelectedCategory(firstA2);
       }
-    }
-  }, [selectedFilter]);
-
-  // SELECT FILTER
-  const handleSelectFilter = (category: string) => {
-    setSelectedFilter(category);
-
-    if (category !== "JFT A1" && category !== "JFT A2") {
+    } else {
+      setSelectedCategory("All");
       setShowFilter(false);
     }
   };
 
-  // SELECT SUB FILTER
   const handleSelectSubFilter = (category: string) => {
+    setCurrentPage(1);
     setSelectedCategory(category);
-
     setShowFilter(false);
   };
 
   return (
-    <div className="w-full my-10">
+    <div className="my-10 w-full">
       {/* HEADER */}
-      <div className="flex flex-col items-center text-center gap-4">
-        <div className="inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-2 backdrop-blur-md">
-          <div className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></div>
+      <div className="flex flex-col items-center gap-4 text-center">
+        <div
+          className="
+            inline-flex items-center gap-3
+            rounded-full border border-cyan-400/20
+            bg-cyan-400/10
+            px-5 py-2
+            backdrop-blur-md
+          "
+        >
+          <div className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
 
-          <span className="text-sm font-bold tracking-[0.2em] text-cyan-300 max-sm:text-xs">
+          <span
+            className="
+              text-sm font-bold
+              tracking-[0.2em]
+              text-cyan-300
+              max-sm:text-xs
+            "
+          >
             WORD COLLECTION
           </span>
         </div>
 
-        <h1 className="font-jaro text-6xl uppercase tracking-[0.2em] text-cyan-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.35)] max-md:text-5xl">
+        <h1
+          className="
+            font-jaro text-6xl uppercase
+            tracking-[0.2em]
+            text-cyan-400
+            drop-shadow-[0_0_25px_rgba(34,211,238,0.35)]
+            max-md:text-5xl
+          "
+        >
           Kotoba List
         </h1>
 
-        <p className="max-w-2xl text-gray-300 leading-relaxed max-sm:text-sm">
+        <p
+          className="
+            max-w-2xl leading-relaxed
+            text-gray-300
+            max-sm:text-sm
+          "
+        >
           Kumpulan kosakata bahasa Jepang untuk bermain Shiritori.
         </p>
       </div>
 
       {/* BACK */}
-      <div className="mt-8 ">
+      <div className="mt-8">
         <button
           onClick={() => navigate(-1)}
-          className="group flex w-fit items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:-translate-x-1 hover:border-yellow-400/30 hover:bg-white/10 cursor-pointer max-sm:text-sm"
+          className="
+            group flex w-fit items-center gap-3
+            rounded-2xl border border-white/10
+            bg-white/5
+            px-5 py-3
+            backdrop-blur-xl
+            transition-all duration-300
+            hover:-translate-x-1
+            hover:border-yellow-400/30
+            hover:bg-white/10
+            max-sm:text-sm
+          "
         >
-          <FaArrowLeftLong className="text-cyan-300 transition-transform duration-300 group-hover:-translate-x-1" />
+          <FaArrowLeftLong
+            className="
+              text-cyan-300
+              transition-transform duration-300
+              group-hover:-translate-x-1
+            "
+          />
 
-          <span className="font-semibold text-white group-hover:text-cyan-300">
+          <span
+            className="
+              font-semibold text-white
+              group-hover:text-cyan-300
+            "
+          >
             Kembali
           </span>
         </button>
       </div>
 
       {/* SEARCH */}
-      <SearchBox value={search} onChange={setSearch} />
-
+      <SearchBox
+        value={search}
+        onChange={(value) => {
+          setCurrentPage(1);
+          setSearch(value);
+        }}
+      />
       {/* FILTER BUTTON */}
       <div className="mt-6">
         <button
           onClick={() => setShowFilter(!showFilter)}
-          className="flex items-center gap-3 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-3 text-sm font-bold tracking-[0.15em] text-cyan-300 backdrop-blur-xl transition-all duration-300 hover:bg-cyan-400/20 cursor-pointer max-sm:text-xs"
+          className="
+            flex items-center gap-3
+            rounded-2xl border border-cyan-400/20
+            bg-cyan-400/10
+            px-5 py-3
+            text-sm font-bold
+            tracking-[0.15em]
+            text-cyan-300
+            backdrop-blur-xl
+            transition-all duration-300
+            hover:bg-cyan-400/20
+            max-sm:text-xs
+          "
         >
           <FaFilter />
           FILTER
@@ -215,20 +271,39 @@ export default function KotobaListPage() {
       )}
 
       {/* WORD GRID */}
-      <div className="mt-10 grid grid-cols-3 gap-4  max-md:grid-cols-2">
+      <div
+        className="
+          mt-10 grid grid-cols-3 gap-5
+          max-lg:grid-cols-2
+          max-sm:grid-cols-1
+        "
+      >
         {paginatedWords.map((kotoba, index) => (
           <WordCard
             key={index}
             word={kotoba.word}
             meaning={kotoba.meaning}
-            category={selectedFilter}
+            category={
+              selectedFilter === "JFT A1" || selectedFilter === "JFT A2"
+                ? selectedCategory
+                : selectedFilter
+            }
           />
         ))}
       </div>
 
       {/* EMPTY */}
       {filteredWords.length === 0 && (
-        <div className="mt-10 text-center text-gray-400">
+        <div
+          className="
+            mt-10 rounded-3xl
+            border border-white/10
+            bg-white/5
+            px-6 py-10
+            text-center text-gray-400
+            backdrop-blur-xl
+          "
+        >
           Tidak ada kosakata ditemukan.
         </div>
       )}
@@ -241,26 +316,61 @@ export default function KotobaListPage() {
       />
 
       {/* SOURCE DATA */}
-      <div className="mt-6 flex justify-center">
-        <div className="max-w-2xl rounded-3xl border border-cyan-400/20 bg-cyan-400/5 px-6 py-4 text-center backdrop-blur-xl">
-          <p className="text-xs font-bold tracking-[0.2em] text-cyan-300">
+      <div className="mt-8 flex justify-center">
+        <div
+          className="
+            max-w-2xl rounded-3xl
+            border border-cyan-400/20
+            bg-cyan-400/5
+            px-6 py-5
+            text-center
+            backdrop-blur-xl
+          "
+        >
+          <p
+            className="
+              text-xs font-bold
+              tracking-[0.2em]
+              text-cyan-300
+            "
+          >
             SUMBER DATA
           </p>
 
-          <p className="mt-2 text-sm leading-relaxed text-gray-300 max-sm:text-xs">
+          <p
+            className="
+              mt-3 text-sm leading-relaxed
+              text-gray-300
+              max-sm:text-xs
+            "
+          >
             Sebagian besar data kosakata pada halaman ini berasal dari
-            kontribusi teman seperjuangan belajar bahasa Jepang saya,{" "}
+            kontribusi teman seperjuangan belajar bahasa Jepang saya,
             <span className="font-semibold text-cyan-300"> Abang Friendly</span>
             , yang kemudian disusun kembali agar lebih nyaman digunakan untuk
             bermain Shiritori.
           </p>
 
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm max-sm:text-xs">
+          <div
+            className="
+              mt-5 flex flex-wrap items-center
+              justify-center gap-3
+              text-sm
+              max-sm:text-xs
+            "
+          >
             <a
               href="https://instagram.com/username"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-pink-400/20 bg-pink-400/10 px-4 py-2 text-pink-300 transition-all duration-300 hover:bg-pink-400/20"
+              className="
+                rounded-xl border border-pink-400/20
+                bg-pink-400/10
+                px-4 py-2
+                text-pink-300
+                transition-all duration-300
+                hover:bg-pink-400/20
+              "
             >
               Instagram
             </a>
@@ -269,7 +379,14 @@ export default function KotobaListPage() {
               href="https://github.com/username"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-gray-200 transition-all duration-300 hover:bg-white/10"
+              className="
+                rounded-xl border border-white/10
+                bg-white/5
+                px-4 py-2
+                text-gray-200
+                transition-all duration-300
+                hover:bg-white/10
+              "
             >
               GitHub
             </a>
